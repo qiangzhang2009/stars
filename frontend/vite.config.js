@@ -1,9 +1,6 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import viteCompression from 'vite-plugin-compression'
 
 function pathResolve(dir) {
@@ -14,16 +11,8 @@ export default defineConfig({
   plugins: [
     vue({
       compilerOptions: {
-        // 完全禁用错误处理
-        errorHandler: false,
-        warnHandler: false
+        preserveWhitespace: true
       }
-    }),
-    AutoImport({
-      resolvers: [ElementPlusResolver()],
-    }),
-    Components({
-      resolvers: [ElementPlusResolver()],
     }),
     viteCompression({
       verbose: true,
@@ -39,9 +28,9 @@ export default defineConfig({
     },
   },
   esbuild: {
-    // 禁用所有警告和错误
-    log: false,
-    legalComments: 'none'
+    legalComments: 'none',
+    loader: '.js',
+    include: /src\/.*\.js$/,
   },
   define: {
     'process.env': {},
@@ -52,43 +41,24 @@ export default defineConfig({
   base: './',
   build: {
     publicDir: 'public',
-    target: 'modules',
+    target: 'es2015',
     outDir: 'dist',
     assetsDir: 'assets',
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-      },
-    },
+    minify: false,
+    sourcemap: false,
     rollupOptions: {
-      output: {
-        assetFileNames: 'static/[ext]/[name].[hash].[ext]',
-        manualChunks: (id) => {
-          if (id.includes('node_modules')) {
-            return 'vandor'
-          }
-        },
-      },
+      onwarn(warning, warn) {
+        // 忽略特定警告
+        if (warning.code === 'THIS_IS_UNDEFINED') return
+        if (warning.code === 'CIRCULAR_DEPENDENCY') return
+        warn(warning)
+      }
     },
   },
   server: {
     host: '0.0.0.0',
-    port: process.env.PORT ? parseInt(process.env.PORT) : 10000,
-    strictPort: false,
+    port: 5173,
     cors: true,
     open: false,
-    allowedHosts: ['stars-c1dr.onrender.com', 'all'],
-    hmr: {
-      overlay: false
-    },
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3000',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
-    },
   },
 })

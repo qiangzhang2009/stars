@@ -74,8 +74,9 @@ export default defineConfig({
     },
   },
   server: {
-    host: true,
-    port: process.env.PORT || 10000,
+    host: '0.0.0.0',
+    port: process.env.PORT ? parseInt(process.env.PORT) : 10000,
+    strictPort: false,
     cors: true,
     open: false,
     allowedHosts: ['stars-c1dr.onrender.com', 'all'],

@@ -73,6 +73,7 @@ export default defineConfig({
     host: '0.0.0.0',
     cors: true,
     open: false,
+    allowedHosts: true,
     hmr: {
       overlay: false
     },

@@ -24,5 +24,8 @@
     "command": "cd frontend && npm run dev",
     "cwd": ".",
     "port": 3000
+  },
+  "env": {
+    "DEEPSEEK_API_KEY": "@deepseek-api-key"
   }
 }

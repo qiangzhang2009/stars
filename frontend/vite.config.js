@@ -74,11 +74,11 @@ export default defineConfig({
     },
   },
   server: {
-    host: '0.0.0.0',
-    port: 10000,
+    host: true,
+    port: process.env.PORT || 10000,
     cors: true,
     open: false,
-    allowedHosts: true,
+    allowedHosts: ['stars-c1dr.onrender.com', 'all'],
     hmr: {
       overlay: false
     },

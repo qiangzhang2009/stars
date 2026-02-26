@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "cd frontend && npx vite --mode development --port $PORT",
-    "dev": "cd frontend && npx vite --mode development --port $PORT",
+    "start": "cd frontend && npx vite --host --mode development --port $PORT",
+    "dev": "cd frontend && npx vite --host --mode development --port $PORT",
     "build": "cd frontend && npm install && cd .. && npm install"
   },
   "dependencies": {

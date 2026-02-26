@@ -1912,7 +1912,6 @@ export default {
                     text.value = ''
                     htmlText.value = ''
                     step.value = 3
-                    n=2
                     eventSource.close()
               } else if(obj.type == '[DONE]'){
                 // chat = {
@@ -2182,7 +2181,6 @@ export default {
                     text.value = ''
                     htmlText.value = ''
                     step.value = 3
-                    n=2
                     eventSource.close()
                 }
               else if (obj.type == 'error'){
@@ -2218,7 +2216,6 @@ export default {
                     text.value = ''
                     htmlText.value = ''
                     step.value = 3
-                    n=2
                     eventSource.close()
               }
             };
@@ -2399,7 +2396,6 @@ export default {
                     text.value = ''
                     htmlText.value = ''
                     step.value = 3
-                    n=2
                     eventSource.close()
                 }
               else if (obj.type == 'error'){
@@ -2411,7 +2407,6 @@ export default {
                     text.value = ''
                     htmlText.value = ''
                     step.value = 3
-                    n=2
                     eventSource.close()
               }
             };
@@ -3326,7 +3321,6 @@ export default {
                     text.value = ''
                     htmlText.value = ''
                     step.value = 3
-                    n=2
                     eventSource.close()
               }else if(obj.content == '[DONE]'){
                     console.info('结束')
@@ -3345,7 +3339,6 @@ export default {
                     text.value = ''
                     htmlText.value = ''
                     step.value = 3
-                    n=2
                     likeLoading.value = false
                     eventSource.close()
                 }

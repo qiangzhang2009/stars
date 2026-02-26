@@ -660,7 +660,6 @@
                     htmlText.value = ''
                     step.value = 3
                     chatNum.value += 1
-                    nVal
                     eventSource.close()
               }
               else if (obj.type == 'error'){
@@ -690,7 +689,6 @@
                     text.value = ''
                     htmlText.value = ''
                     step.value = 3
-                    nVal
                     eventSource.close()
               }
             };
@@ -894,7 +892,6 @@
                     text.value = ''
                     htmlText.value = ''
                     step.value = 3
-                    nVal
                     eventSource.close()
                 }
               else if (obj.type == 'error'){
@@ -906,7 +903,6 @@
                     text.value = ''
                     htmlText.value = ''
                     step.value = 3
-                    nVal
                     eventSource.close()
               }
             };
@@ -1566,7 +1562,6 @@
                     text.value = ''
                     htmlText.value = ''
                     step.value = 3
-                    nVal
                     eventSource.close()
               }  if(obj.content == '[DONE]'){
                     console.info('结束')
@@ -1578,7 +1573,6 @@
                     text.value = ''
                     htmlText.value = ''
                     step.value = 3
-                    nVal
                     likeLoading.value = false
                     eventSource.close()
                 } 

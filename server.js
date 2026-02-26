@@ -2,12 +2,17 @@ import express from 'express';
 import cors from 'cors';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { existsSync } from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// 检查 dist 目录是否存在
+const distPath = join(__dirname, 'frontend/dist');
+const distExists = existsSync(distPath);
 
 // CORS 配置
 app.use(cors());
@@ -129,12 +134,40 @@ app.get('/api/checkLogin', (req, res) => {
 });
 
 // 静态文件服务 - 前端
-app.use(express.static(join(__dirname, 'frontend/dist')));
-
-// SPA fallback
-app.get('*', (req, res) => {
-  res.sendFile(join(__dirname, 'frontend/dist/index.html'));
-});
+if (distExists) {
+  app.use(express.static(distPath));
+  
+  // SPA fallback
+  app.get('*', (req, res) => {
+    res.sendFile(join(distPath, 'index.html'));
+  });
+} else {
+  // 如果没有构建前端，返回提示
+  app.get('/', (req, res) => {
+    res.send(`
+      <html>
+        <head><title>AI Fortune Telling</title></head>
+        <body>
+          <h1>服务器正在运行</h1>
+          <p>API 可用: /api/chat</p>
+          <p>注意: 前端未构建，请在本地构建后部署。</p>
+        </body>
+      </html>
+    `);
+  });
+  
+  app.get('*', (req, res) => {
+    res.send(`
+      <html>
+        <head><title>404</title></head>
+        <body>
+          <h1>404 - 页面未找到</h1>
+          <p>请先构建前端再部署。</p>
+        </body>
+      </html>
+    `);
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

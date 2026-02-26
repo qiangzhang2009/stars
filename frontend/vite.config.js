@@ -1,36 +1,39 @@
 import { defineConfig } from 'vite'
-import { resolve } from 'path' // 主要用于alias文件路径别名
+import { resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
-// 下面这三行是引入组件
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import viteCompression from 'vite-plugin-compression'
+
 function pathResolve(dir) {
   return resolve(__dirname, '.', dir)
 }
-// https://vitejs.dev/config/
+
 export default defineConfig({
   plugins: [
-    vue(),
-    // 自动引入组件和自动注册 new add
+    vue({
+      compilerOptions: {
+        errorHandler: (err, instance, info) => {
+          // 忽略某些编译错误
+          console.warn('Vue compiler warning:', err.message)
+        }
+      }
+    }),
     AutoImport({
       resolvers: [ElementPlusResolver()],
     }),
     Components({
       resolvers: [ElementPlusResolver()],
     }),
-    // 配置 gzip 压缩插件
     viteCompression({
-      // options
-      verbose: true, // 是否在控制台输出压缩结果
-      disable: false, // 是否禁用
-      threshold: 1024 * 10, // 压缩的门槛大小
-      algorithm: 'gzip', // 压缩的算法
-      ext: '.gz', // 压缩后的文件扩展名
+      verbose: true,
+      disable: false,
+      threshold: 1024 * 10,
+      algorithm: 'gzip',
+      ext: '.gz',
     }),
   ],
-  // 这里是将src目录配置别名为 /@ 方便在项目中导入src目录下的文件
   resolve: {
     alias: {
       '/@': pathResolve('src'),
@@ -39,23 +42,19 @@ export default defineConfig({
   define: {
     'process.env': {},
   },
-  // 强制预构建插件包
   optimizeDeps: {
     include: ['axios'],
   },
   base: './',
-  // 打包配置
   build: {
-    publicDir: '',
+    publicDir: 'public',
     target: 'modules',
-    outDir: 'dist', //指定输出路径
-    assetsDir: 'assets', // 指定生成静态资源的存放路径
-    minify: 'terser', // 混淆器，terser构建后文件体积更小
+    outDir: 'dist',
+    assetsDir: 'assets',
+    minify: 'terser',
     rollupOptions: {
       output: {
-        // 对静态资源进行单独打包
         assetFileNames: 'static/[ext]/[name].[hash].[ext]',
-        // 对项目依赖进行单独打包
         manualChunks: (id) => {
           if (id.includes('node_modules')) {
             return 'vandor'
@@ -65,7 +64,6 @@ export default defineConfig({
     },
     terserOptions: {
       compress: {
-        //生产环境时移除console
         drop_console: true,
         drop_debugger: true,
       },

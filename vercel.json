@@ -6,8 +6,8 @@
       "use": "@vercel/node"
     },
     {
-      "src": "frontend/dist/**",
-      "use": "@vercel/static"
+      "src": "frontend/package.json",
+      "use": "@vercel/dev-builder"
     }
   ],
   "routes": [
@@ -16,8 +16,13 @@
       "dest": "/api/$1"
     },
     {
-      "src": "/((?!api).*)",
-      "dest": "/frontend/dist/$1"
+      "src": "/(.*)",
+      "dest": "/frontend/$1"
     }
-  ]
+  ],
+  "dev": {
+    "command": "cd frontend && npm run dev",
+    "cwd": ".",
+    "port": 3000
+  }
 }

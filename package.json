@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "cd frontend && npm run dev",
-    "dev": "cd frontend && npm run dev",
-    "build": "cd frontend && npm install"
+    "start": "cd frontend && npx vite --mode development --port $PORT",
+    "dev": "cd frontend && npx vite --mode development --port $PORT",
+    "build": "cd frontend && npm install && cd .. && npm install"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.39.0",

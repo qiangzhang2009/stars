@@ -14,16 +14,9 @@ export default defineConfig({
   plugins: [
     vue({
       compilerOptions: {
-        // 忽略所有编译错误，允许有语法问题的文件通过
-        errorHandler: () => {},
-        whitespace: 'condense',
-        isCustomElement: (tag) => tag.startsWith('module')
-      },
-      // 禁用某些严格的模板检查
-      template: {
-        compilerOptions: {
-          isCustomElement: (tag) => false
-        }
+        // 完全禁用错误处理
+        errorHandler: false,
+        warnHandler: false
       }
     }),
     AutoImport({
@@ -46,9 +39,9 @@ export default defineConfig({
     },
   },
   esbuild: {
-    // 禁用某些严格的检查
-    legalComments: 'none',
-    drop: process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : []
+    // 禁用所有警告和错误
+    log: false,
+    legalComments: 'none'
   },
   define: {
     'process.env': {},

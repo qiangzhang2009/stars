@@ -1649,30 +1649,6 @@
         // RelatedQuestions,
       } 
     },
-    components: {
-      TextComponents,
-      Horoscope,
-      ConstellationRankingList,
-      ConstellationRankingItem,
-      ZodiacQuery,
-      ConstellationInquir,
-      BirthdatePassword,
-      ChineseZodiacFortune,
-      DescendingZodiac,
-      BirthdayFlower,
-      BirthdayBook,
-      ConsteBloodPersonality,
-      Ascendant,
-      MoonSign,
-      Constellations48,
-      CheatingPerson,
-      AstrologicalChart,
-      AstrologicalHouseChart,
-      PlanetInHouse,
-      PlanetInSign,
-      DisLikeReason,
-      DateTimeSelect,
-    },
     watch:{
       chatNum(val,old){
         if(!this.$route.query.type) return

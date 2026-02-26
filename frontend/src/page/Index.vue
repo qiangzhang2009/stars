@@ -3607,30 +3607,6 @@ export default {
       // RelatedQuestions,
    } 
   },
-  components: {
-    Horoscope,
-    ConstellationRankingList,
-    ConstellationRankingItem,
-    ZodiacQuery,
-    ConstellationInquir,
-    BirthdatePassword,
-    ChineseZodiacFortune,
-    DescendingZodiac,
-    BirthdayFlower,
-    BirthdayBook,
-    ConsteBloodPersonality,
-    Ascendant,
-    MoonSign,
-    Constellations48,
-    CheatingPerson,
-    AstrologicalChart,
-    AstrologicalHouseChart,
-    TextComponents,
-    PlanetInHouse,
-    PlanetInSign,
-    DisLikeReason,
-    DateTimeSelect,
-  },
   watch:{
     // chatList(val, old){
     //   this.modelChatList = val.filter(item => item.submodel == this.sxxzType.submodel )

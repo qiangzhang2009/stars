@@ -232,7 +232,7 @@
         <div class="colse" @click="closeHandle">  {{ $t('cancel') }}</div>
       
         <div class="delect" v-if="selectType == 'delete'" @click="deleteChat">
-          <img src="/@/assets/images/deleteChat.png" alt="" srcset="">
+          <img src="/@/assets/images/deletechat.png" alt="" srcset="">
           {{ $t('delete') }}
         </div>
         <template v-if="selectType == 'share'">

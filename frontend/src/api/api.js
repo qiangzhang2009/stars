@@ -1,6 +1,7 @@
 import request from './request';
+// AI Chat API (configure your own backend)
 export const mpcbot = async (data) => {
-  return await request({ method: 'post', url: 'https://www.swftc.info/ai/mpcbot' ,data: data});
+  return await request({ method: 'post', url: '/api/mpcbot' ,data: data});
 };
 
 // 校验用户登录状态

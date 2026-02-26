@@ -346,7 +346,7 @@ export default {
     //     }
     // },
     async getMsgGroupList(){
-        if(!localStorage.getItem('starloomAI-token')) return
+        if(!localStorage.getItem('auth-token')) return
         this.loading = true
         const res = await getMsgGroupList()
         if(res.code == 200){

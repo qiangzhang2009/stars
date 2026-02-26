@@ -255,7 +255,7 @@ export default {
           loginOut().then((res) => {
             store.commit("setLoginStatus", false);
             store.commit("setAccount", "");
-            localStorage.setItem("starloomAI-token", "");
+            localStorage.setItem("auth-token", "");
             // store.commit('setUserModel', '3.5')
             accountInfo.value.user_account = null;
           });
@@ -438,7 +438,7 @@ export default {
   mounted() {
     // 控制登录弹框是否弹出
     const num = this.getCookie("popUpLogin");
-    const loginToken = localStorage.getItem("starloomAI-token");
+    const loginToken = localStorage.getItem("auth-token");
     if (num) {
       this.setCookie("popUpLogin", Number(num) + 1, 365);
       const time = (Number(num) + 1) % 5;

@@ -1032,7 +1032,7 @@ import EN from 'element-plus/dist/locale/en.mjs'
 
 // import  from 'js-md5';
 import { marked } from 'marked'
-const url_pro = 'https://starloom.mpcbot.ai/chat';
+const url_pro = '/api/chat';
 const url_test = 'https://testastroai.mpcbot.ai/chat';
 
 export default {
@@ -1369,7 +1369,7 @@ export default {
         //     eventSource = new SSE(v1chatUrl.value, {
         //       headers: {
         //         'Content-Type': 'application/json', 
-        //         'Authorization': localStorage.getItem('starloomAI-token'),
+        //         'Authorization': localStorage.getItem('auth-token'),
         //       },
         //       payload: JSON.stringify(requestData),
         //       method: "POST"
@@ -1724,7 +1724,7 @@ export default {
             eventSource = new SSE(v1chatUrl.value, {
               headers: {
                 'Content-Type': 'application/json', 
-                'Authorization': localStorage.getItem('starloomAI-token'),
+                'Authorization': localStorage.getItem('auth-token'),
               },
               payload: JSON.stringify(requestData),
               method: "POST"
@@ -2083,7 +2083,7 @@ export default {
             eventSource = new SSE(v1chatUrl.value, {
               headers: {
                 'Content-Type': 'application/json', 
-                'Authorization': localStorage.getItem('starloomAI-token'),
+                'Authorization': localStorage.getItem('auth-token'),
               },
               payload: JSON.stringify(requestData),
               method: "POST"
@@ -2312,7 +2312,7 @@ export default {
             eventSource = new SSE(v1chatUrl.value, {
               headers: {
                 'Content-Type': 'application/json', 
-                'Authorization': localStorage.getItem('starloomAI-token'),
+                'Authorization': localStorage.getItem('auth-token'),
               },
               payload: JSON.stringify(requestData),
               method: "POST"
@@ -2825,8 +2825,9 @@ export default {
       let url
           if(location.href.indexOf('defi.swftcoin.com') != -1){
             url = 'https://defi.swftcoin.com/view/astroai_web-test/index.html#/'
-          } else if(location.href.indexOf('starloom.ai') != -1 || location.href.indexOf('tianjige') != -1 ){
-            url = 'https://starloom.ai//#/'
+          // Check if production environment
+          if(location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+            url = location.origin + '/#/'
           } else{
             url = 'http://192.168.124.3:5173/#/'
           }
@@ -2857,8 +2858,8 @@ export default {
         // let url
         //   if(location.href.indexOf('defi.swftcoin.com') != -1){
         //     url = 'https://defi.swftcoin.com/view/astroai_web-test/index.html#/'
-        //   } else if(location.href.indexOf('starloom.ai') != -1 || location.href.indexOf('tianjige') != -1 ){
-        //     url = 'https://starloom.ai//#/'
+        //   } else if(location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+        //     url = location.origin + '/#/'
         //   } else{
         //     url = 'http://192.168.124.3:5173/#/'
         //   }
@@ -3158,7 +3159,7 @@ export default {
         eventSource = new SSE(v1chatUrl.value, {
           headers: {
             'Content-Type': 'application/json', 
-            'Authorization': localStorage.getItem('starloomAI-token'),
+            'Authorization': localStorage.getItem('auth-token'),
           },
           payload: JSON.stringify(requestData),
           method: "POST"

@@ -16,11 +16,11 @@ const store = createStore({
       screenWidth: document.body.clientWidth, // 当前窗口的宽度
       selectStatus: false,  // 分享/删除 选择状态
       selectType: '',
-      apiurl: 'https://service-prod.starloom.ai/chat',   // 测试 https://service-test.starloom.ai/chat   // 生产 https://service-prod.starloom.ai/chat
-      v1chatUrl: 'https://service-prod.starloom.ai/v1/chat',   // 测试 https://service-test.starloom.ai/v1/chat   // 生产 https://service-prod.starloom.ai/v1/chat
+      apiurl: '/api/chat',   // Your backend API URL
+      v1chatUrl: '/api/v1/chat',   // Your backend API URL
       sharelink: '',
       firstLogin: '',   // 是否是第一次登录
-      userModel: '4',      //localStorage.getItem('userModel') && localStorage.getItem('userModel') != '' ? localStorage.getItem('userModel') : '3.5',// 用户选择的模型  !localStorage.getItem('starloomAI-token') ? '3.5' : localStorage.getItem('userModel') || '3.5',
+      userModel: '4',      //localStorage.getItem('userModel') && localStorage.getItem('userModel') != '' ? localStorage.getItem('userModel') : '3.5',// 用户选择的模型  !localStorage.getItem('auth-token') ? '3.5' : localStorage.getItem('userModel') || '3.5',
       haveCount: false,  //是否有条数可以继续问
       receiveType: 'audio',    // 接收音频还是文本  audio是音频   text是文本
       gptAudio: '',

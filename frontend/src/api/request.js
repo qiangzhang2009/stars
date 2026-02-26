@@ -79,7 +79,7 @@ const request = async ({ method, url, data = null, params = null }) => {
         data,
         params,
         headers:{
-          'Authorization': localStorage.getItem('starloomAI-token'),
+          'Authorization': localStorage.getItem('auth-token'),
         }
       });
     return response.data;

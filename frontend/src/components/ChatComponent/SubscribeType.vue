@@ -140,13 +140,8 @@
       async PaymentMethod (){
         if(!this.user_card_type) return
         let url
-        if(location.href.indexOf('defi.swftcoin.com') != -1){
-          url = 'https://defi.swftcoin.com/view/astroai_web-test/index.html#/'
-        } else if(location.href.indexOf('starloom.ai') != -1 || location.href.indexOf('tianjige') != -1 ){
-          url = 'https://starloom.ai//#/'
-        } else{
-          url = 'http://192.168.124.3:5173/#/'
-        }
+        // Use current host for redirect
+        url = location.origin + '/#/'
         // const express = require('express');
         // const app = express();
         const currentTimestampInSeconds = Math.floor(Date.now() / 1000);
@@ -168,7 +163,7 @@
                     'source': 'stripe',
                     'email': this.account,
                     'productCats': this.user_card_type.card_type, // 卡类型：1-1次；2-15次；3-月卡；4-季卡；5-年卡
-                    'platform': 'starloom',
+                    'platform': 'ai-fortune',
                     'userId': Number(localStorage.getItem('userId')),
                 }
             },

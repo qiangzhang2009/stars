@@ -376,7 +376,7 @@ export default {
       const res = await userLogin(loginParams);
       this.loading = false;
       if (res.code == 200 && res.data) {
-        localStorage.setItem("starloomAI-token", res.data.user_token);
+        localStorage.setItem("auth-token", res.data.user_token);
         this.$emit("loginSuccess", res.data.account);
         localStorage.setItem("userId", res.data.user_id);
         this.$store.commit("setUserModel", "4");

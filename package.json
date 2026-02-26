@@ -1,0 +1,14 @@
+{
+  "name": "ai-fortune-api",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "vercel": "^33.0.0",
+    "@supabase/supabase-js": "^2.39.0",
+    "axios": "^1.6.0"
+  }
+}

@@ -1946,7 +1946,8 @@ export default {
                   text.value = ''
                   htmlText.value = ''
                   step.value = 3
-                  n=2
+                  let nVal = 2
+                  nVal
                   eventSource.close()
               }
             };

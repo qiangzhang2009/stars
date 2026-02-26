@@ -74,14 +74,20 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     cors: true, // 默认启用并允许任何源
-    open: true, // 在服务器启动时自动在浏览器中打开应用程序
+    open: false, // 在服务器启动时自动在浏览器中打开应用程序
     //反向代理配置，注意rewrite写法，开始没看文档在这里踩了坑
     proxy: {
       '/api': {
-        target: 'http://192.168.99.223:3000', //代理接口
+        target: 'http://localhost:3000', // 代理到 Vercel 本地开发服务器
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
+      // 如果需要代理到另一个本地服务器，可以使用
+      // '/chat': {
+      //   target: 'http://localhost:5173',
+      //   changeOrigin: true,
+      //   rewrite: (path) => path.replace(/^\/chat/, ''),
+      // }
     },
   },
 })

@@ -601,7 +601,7 @@
                   //     htmlText.value = ''
                   //     step.value = 3
                   //     chatNum.value += 1
-                  //     n=2
+                  //     nVal
                   //     eventSource.close()
                   // }else{
                     text.value += objcontent
@@ -660,7 +660,7 @@
                     htmlText.value = ''
                     step.value = 3
                     chatNum.value += 1
-                    n=2
+                    nVal
                     eventSource.close()
               }
               else if (obj.type == 'error'){
@@ -690,7 +690,7 @@
                     text.value = ''
                     htmlText.value = ''
                     step.value = 3
-                    n=2
+                    nVal
                     eventSource.close()
               }
             };
@@ -874,7 +874,7 @@
                 //     text.value = ''
                 //     htmlText.value = ''
                 //     step.value = 3
-                //     n=2
+                //     nVal
                 //     eventSource.close()
                 // }else{
                   text.value += objcontent
@@ -894,7 +894,7 @@
                     text.value = ''
                     htmlText.value = ''
                     step.value = 3
-                    n=2
+                    nVal
                     eventSource.close()
                 }
               else if (obj.type == 'error'){
@@ -906,7 +906,7 @@
                     text.value = ''
                     htmlText.value = ''
                     step.value = 3
-                    n=2
+                    nVal
                     eventSource.close()
               }
             };
@@ -1488,7 +1488,7 @@
             //       chat.copyText = text.value
             //       chatList.value.push(chat)
             //       text.value = ""
-            //       n=2
+            //       nVal
             //       eventSource.close()
             //       likeLoading.value = false
             //     } else {
@@ -1549,7 +1549,7 @@
                 //     text.value = ''
                 //     htmlText.value = ''
                 //     step.value = 3
-                //     n=2
+                //     nVal
                 //     likeLoading.value = false
                 //     eventSource.close()
                 // }else{
@@ -1566,7 +1566,7 @@
                     text.value = ''
                     htmlText.value = ''
                     step.value = 3
-                    n=2
+                    nVal
                     eventSource.close()
               }  if(obj.content == '[DONE]'){
                     console.info('结束')
@@ -1578,7 +1578,7 @@
                     text.value = ''
                     htmlText.value = ''
                     step.value = 3
-                    n=2
+                    nVal
                     likeLoading.value = false
                     eventSource.close()
                 } 

@@ -5,7 +5,7 @@
   "scripts": {
     "start": "cd frontend && npm run dev",
     "dev": "cd frontend && npm run dev",
-    "build": "echo 'Using dev mode'"
+    "build": "cd frontend && npm install"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.39.0",
